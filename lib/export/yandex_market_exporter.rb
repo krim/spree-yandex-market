@@ -16,7 +16,7 @@ module Export
       @config = Spree::YandexMarket::Config.instance
       @host = @config.preferred_url.sub(%r[^http://],'').sub(%r[/$], '')
       ActionController::Base.asset_host = @config.preferred_url
-      puts @config.inspect
+
       @currencies = @config.preferred_currency.split(';').map{|x| x.split(':')}
       @currencies.first[1] = 1
       
