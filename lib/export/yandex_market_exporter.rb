@@ -20,8 +20,8 @@ module Export
       @currencies = @config.preferred_currency.split(';').map{|x| x.split(':')}
       @currencies.first[1] = 1
       
-      @preferred_category = Taxon.find_by_name(@config.preferred_category)
-      @categories = @preferred_category.self_and_descendants
+      @preferred_categories = Taxon.where(parent_id: nil)
+      @categories = @preferred_categories.map{|q| q.self_and_descendants}.flatten
       @categories_ids = @categories.collect { |x| x.id }
       
       # Nokogiri::XML::Builder.new({ :encoding =>"utf-8"}, SCHEME) do |xml|
@@ -54,7 +54,7 @@ module Export
               end
             }
             xml.offers { # список товаров
-              products = Product.in_taxon(@preferred_category).active.master_price_gte(0.001)
+              products = Product.active.master_price_gte(0.001)
               products = products.on_hand if @config.preferred_wares == "on_hand"
               products = products.where(:export_to_yandex_market => true).group_by_products_id
               products.each do |product|

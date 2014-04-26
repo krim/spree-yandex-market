@@ -20,12 +20,12 @@
     <%= text_field_tag "preferences[preferred_url]", @config.preferred_url, :size => 50 %>
   </label>    
 </fieldset>
-
+<!--
 <fieldset>
   <legend><span><%= t('configure_yandex_market.export_category') %></span></legend>
 <%= select_tag 'preferences[preferred_category]', options_for_select(@taxons.collect{ |u| [u.name, u.name] }, @config.preferred_category) -%>
 </fieldset>
-
+-->
 <fieldset>
   <legend><span><%= t('configure_yandex_market.what_wares_export') %></span></legend>
   <ol>
