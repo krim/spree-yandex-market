@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
 
   s.author            = 'David Heinemeier Hansson'
   s.email             = 'david@loudthinking.com'
-  s.homepage          = 'https://github.com/romul/spree-yandex-market'
+  s.homepage          = 'https://github.com/krim/spree-yandex-market'
   # s.rubyforge_project = 'actionmailer'
 
   s.files         = `git ls-files`.split("\n")
